@@ -1,6 +1,8 @@
-# CLID
+# CLI-D
 
-## Backend
+CLI based dating app.
+
+## Backend (mini-spec)
 
 ### API Routes
 
@@ -85,41 +87,41 @@ CREATE TABLE messages (
 );
 ```
 
-## Frontend
+## Frontend (wireframes)
 
-```
-╔════════════════════════════════╗
+```mathematica
+╔═══════════════════════════════════╗
 ║           CLID Dating             ║
-╠════════════════════════════════╣
+╠═══════════════════════════════════╣
 ║  [S] Sign In                      ║
 ║  [U] Sign Up                      ║
 ║                                   ║
 ║  [Q] Quit                         ║
-╚════════════════════════════════╝
+╚═══════════════════════════════════╝
 
 
-╔════════════════════════════════╗
+╔═══════════════════════════════════╗
 ║            Sign In                ║
-╠════════════════════════════════╣
+╠═══════════════════════════════════╣
 ║  Username: [__________]           ║
 ║                                   ║
 ║  <Enter> Continue   <Esc> Back    ║
-╚════════════════════════════════╝
+╚═══════════════════════════════════╝
 
 
-╔════════════════════════════════╗
+╔═══════════════════════════════════╗
 ║            Sign Up                ║
-╠════════════════════════════════╣
+╠═══════════════════════════════════╣
 ║  Username: [__________]           ║
 ║  Email:    [__________]           ║
 ║                                   ║
 ║  <Enter> Continue   <Esc> Back    ║
-╚════════════════════════════════╝
+╚═══════════════════════════════════╝
 
 
-╔═══════════════════════════════════════════╗
+╔═══════════════════════════════════════════════╗
 ║        Create Your Profile                    ║
-╠═══════════════════════════════════════════╣
+╠═══════════════════════════════════════════════╣
 ║  Name:     [__________]                       ║
 ║  Age:      [__]       Gender:   [M/F/Other]   ║
 ║  Location: [__________]                       ║
@@ -135,49 +137,51 @@ CREATE TABLE messages (
 ║  > "Coding in pajamas"                        ║
 ║                                               ║
 ║  [S] Save    [E] Edit Again                   ║
-╚═══════════════════════════════════════════╝
+╚═══════════════════════════════════════════════╝
 
 
 ╔════════════════════════════════╗
-║             Home                  ║
+║             Home               ║
 ╠════════════════════════════════╣
-║  [B] Browse Profiles              ║
-║  [M] Matches & Chats              ║
-║  [P] My Profile                   ║
-║  [F] Preferences                  ║
-║  [O] Sign Out                     ║
+║  [B] Browse Profiles           ║
+║  [M] Matches & Chats           ║
+║  [P] My Profile                ║
+║  [F] Preferences               ║
+║  [O] Sign Out                  ║
 ╚════════════════════════════════╝
 
 
-╔═══════════════════════════════════════════╗
-║       Browsing (2 of 10)                      ║
-╠═══════════════════════════════════════════╣
-║  Name:    Alex                                ║
-║  Age:     25            Gender:  Male         ║
-║  Location: New York                           ║
-║                                               ║
-║  Bio: Loves hiking and coffee.                ║
-║                                               ║
-║  Interests: Hiking, Jazz, Art                 ║
-║                                               ║
-║  Prompt 1: "A shower thought…"                ║
-║  > Cats probably think we’re their butlers.   ║
-║                                               ║
-║  Prompt 2: "A shower thought…"                ║
-║  > Cats probably think we’re their butlers.   ║
-║                                               ║
-║ [←] No    [↑] SuperLike  [→] Like             ║
-║            [Q] Quit                           ║
-╚═══════════════════════════════════════════╝
+╔══════════════════════════════════════════════╗
+║       Browsing (2 of 10)                     ║
+╠══════════════════════════════════════════════╣
+║  Name:    Alex                               ║
+║  Age:     25            Gender:  Male        ║
+║  Location: New York                          ║
+║                                              ║
+║  Bio: Loves hiking and coffee.               ║
+║                                              ║
+║  Interests: Hiking, Jazz, Art                ║
+║                                              ║
+║  Prompt 1: "A shower thought…"               ║
+║  > Cats probably think we’re their butlers.  ║
+║                                              ║
+║  Prompt 2: "A shower thought…"               ║
+║  > Cats probably think we’re their butlers.  ║
+║                                              ║
+║ [←] No    [↑] SuperLike  [→] Like            ║
+║            [Q] Quit                          ║
+╚══════════════════════════════════════════════╝
 
 
 ╔════════════════════════════════╗
-║           Preferences             ║
+║           Preferences          ║
 ╠════════════════════════════════╣
-║  Location:   [Any]                ║
-║  Gender:     [All]                ║
-║  Age Range:  [18 - 30]            ║
-║                                   ║
-║  [S] Save   [B] Back              ║
+║  Location:   [Any]             ║
+║  Gender:     [All]             ║
+║  Age Range:  [18 - 30]         ║
+║                                ║
+║  [S] Save   [B] Back           ║
 ╚════════════════════════════════╝
 ```
+
+## [LICENSE](LICENSE)
