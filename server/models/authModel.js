@@ -14,7 +14,13 @@ const findUserByUsername = (username) => {
     return db.prepare('SELECT * FROM users WHERE username = ?').get(username)
 }
 
+const revokeToken = (jti, expiresAt) => {
+    const stmt = db.prepare('INSERT OR REPLACE INTO revoked_tokens (jti, expires_at) VALUES (?, ?)');
+    stmt.run(jti, expiresAt);
+}
+
 module.exports = {
     createUser,
-    findUserByUsername
+    findUserByUsername,
+    revokeToken
 }
