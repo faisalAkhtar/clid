@@ -17,11 +17,24 @@ const init = () => {
     `)
 
     db.exec(`
-    CREATE TABLE IF NOT EXISTS revoked_tokens (
-      jti TEXT PRIMARY KEY,
-      expires_at INTEGER NOT NULL
-    );
-  `);
+        CREATE TABLE IF NOT EXISTS profiles (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER UNIQUE,
+            name TEXT,
+            age INTEGER,
+            gender TEXT,
+            bio TEXT,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id)
+        );
+    `)
+
+    db.exec(`
+        CREATE TABLE IF NOT EXISTS revoked_tokens (
+            jti TEXT PRIMARY KEY,
+            expires_at INTEGER NOT NULL
+        );
+    `)
 }
 
 init()

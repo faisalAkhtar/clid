@@ -4,6 +4,7 @@ const { v4:uuidv4 } = require('uuid')
 
 const { createUser, findUserByUsername, revokeToken } = require('../models/authModel')
 const { signJwt } = require('../middleware/authMiddleware')
+const { createProfile } = require('../models/profileModel')
 
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '1h'
 
@@ -17,6 +18,7 @@ router.post('/signup', (req, res) => {
     if (existing) return res.status(409).json({ error: 'username already exists' })
 
     const user = createUser({ username, email })
+    createProfile(user.id)
     const jti = uuidv4()
     const token = signJwt({ sub: user.id, username: user.username }, { expiresIn: JWT_EXPIRES_IN, jwtid: jti })
     res.json({ user: { id: user.id, username: user.username, email: user.email }, token, jti })

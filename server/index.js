@@ -6,6 +6,7 @@ const cors = require('cors')
 
 const homeRoutes = require('./routes/home')
 const authRoutes = require('./routes/auth')
+const profileRoutes = require('./routes/profile')
 
 const app = express()
 const server = http.createServer(app)
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 // routes
 app.use('/', homeRoutes)
 app.use('/auth', authRoutes)
+app.use('/profile', profileRoutes)
 // TODO: Undefined routes
 
 // errors
