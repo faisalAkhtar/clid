@@ -6,7 +6,7 @@ const listProfiles = (limit = 5, offset = 0, self_id) => {
     }
 
     const query = `
-        SELECT user_id as id, name, age, gender, bio
+        SELECT user_id as id, name, age, gender, location, interests, bio
         FROM profiles
         WHERE user_id != ?
         LIMIT ? OFFSET ?

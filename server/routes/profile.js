@@ -13,13 +13,13 @@ router.get('/', authRequired, (req, res) => {
 
 router.put('/', authRequired, (req, res) => {
     const user_id = req.user.id
-    const {name, age, gender, bio} = req.body
+    const {name, age, gender, bio, location, interests} = req.body
 
     if (!name && !age && !gender && !bio) {
         return res.status(400).json({ error: 'at least one profile field requried' })
     }
 
-    const profile = updateProfile(user_id, { name, age: age ? Number(age): undefined, gender, bio })
+    const profile = updateProfile(user_id, { name, age: age ? Number(age): undefined, gender, bio, location, interests })
     if (!profile) {
         return res.status(404).json({error: 'cannot update profile'})
     }

@@ -42,6 +42,8 @@ const init = () => {
             name TEXT,
             age INTEGER,
             gender TEXT,
+            location TEXT,
+            interests TEXT,
             bio TEXT,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (user_id) REFERENCES users(id)
