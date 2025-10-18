@@ -1,6 +1,6 @@
 # CLI-D
 
-CLI based dating app.
+CLI based dating app
 
 ## Backend (mini-spec)
 
@@ -17,7 +17,7 @@ CLI based dating app.
     - POST /preferences {location, gender_pref, min_age, max_age}
 - Browse
     - GET /browse → list of profiles
-    - POST /swipe {target_id, type}
+    - POST /browse/swipe {target_id, type}
 - Matches & Chat
     - GET /matches
     - GET /messages/:match_id
@@ -37,55 +37,6 @@ CLI based dating app.
 - send <match_id> <text> → Send message
 - signout → Exit session
 
-### Databases
-
-```sql
-CREATE TABLE users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT UNIQUE NOT NULL,
-    email TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE profiles (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER UNIQUE,
-    name TEXT,
-    age INTEGER,
-    gender TEXT,
-    bio TEXT,
-    FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
-CREATE TABLE preferences (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER UNIQUE,
-    location TEXT,
-    gender_pref TEXT,
-    min_age INTEGER,
-    max_age INTEGER,
-    FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
-CREATE TABLE matches (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user1_id INTEGER,
-    user2_id INTEGER,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user1_id) REFERENCES users(id),
-    FOREIGN KEY (user2_id) REFERENCES users(id)
-);
-
-CREATE TABLE messages (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    match_id INTEGER,
-    sender_id INTEGER,
-    text TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (match_id) REFERENCES matches(id),
-    FOREIGN KEY (sender_id) REFERENCES users(id)
-);
-```
 
 ## Frontend (wireframes)
 
