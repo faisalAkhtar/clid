@@ -1,12 +1,16 @@
 const { v4:uuidv4 } = require('uuid')
 
 const db = require('../db')
+const seed_swipes = require('../../data/seed_swipes')
 
 const createUser = ({username, email}) => {
     const id = uuidv4()
     const created_at = Date.now()
     const stmt = db.prepare('INSERT INTO users (id, username, email, created_at) VALUES (?, ?, ?, ?)')
     stmt.run(id, username, email || null, created_at)
+    if (process.env.NODE_ENV === 'development') {
+        seed_swipes(db, id)
+    }
     return { id, username, email, created_at }
 }
 

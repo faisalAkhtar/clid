@@ -2,7 +2,8 @@ const express = require('express')
 const router = express.Router()
 
 const { authRequired } = require('../middleware/authMiddleware')
-const { listProfiles } = require('../models/browseModel')
+const { validateSwipe } = require('../middleware/browseMiddleware')
+const { listProfiles, swipeProfile } = require('../models/browseModel')
 
 router.get('/', authRequired, (req, res) => {
     const limit = parseInt(req.body.limit)
@@ -19,6 +20,18 @@ router.get('/', authRequired, (req, res) => {
     let profiles = listProfiles(limit, offset, req.user.id)
 
     res.json({ profiles })
+})
+
+router.post('/swipe', authRequired, validateSwipe, (req, res) => {
+    const userId = req.user.id
+    const info = req.swipeInfo
+
+    if (info.alreadySwiped) {
+        return res.json({ alreadySwiped: true, match: false })
+    }
+
+    const result = swipe(userId, info.target_id, info.type, info.reverseLike)
+    res.json(result)
 })
 
 module.exports = router

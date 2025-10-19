@@ -51,6 +51,19 @@ const init = () => {
     `)
 
     db.exec(`
+        CREATE TABLE IF NOT EXISTS swipes (
+            id          INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id     INTEGER NOT NULL,
+            target_id   INTEGER NOT NULL,
+            type        TEXT CHECK (type IN ('like', 'pass')) NOT NULL,
+            created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE(user_id, target_id),
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+            FOREIGN KEY (target_id) REFERENCES users(id) ON DELETE CASCADE
+        );
+    `);
+
+    db.exec(`
         CREATE TABLE IF NOT EXISTS revoked_tokens (
             jti TEXT PRIMARY KEY,
             expires_at INTEGER NOT NULL
