@@ -1,4 +1,4 @@
-INSERT OR IGNORE INTO users (id, username, email) VALUES
+INSERT INTO users (id, username, email) VALUES
 (1, 'shahrukh_khan', 'shahrukh@example.com'),
 (2, 'deepika_padukone', 'deepika@example.com'),
 (3, 'leonardo_dicaprio', 'leo@example.com'),

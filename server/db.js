@@ -29,8 +29,8 @@ const init = () => {
     db.exec(`
         CREATE TABLE IF NOT EXISTS users (
             id INT NOT NULL PRIMARY KEY,
-            username VARCHAR(50) UNIQUE NOT NULL,
-            email VARCHAR(200),
+            username TEXT UNIQUE NOT NULL,
+            email TEXT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
     `)
@@ -61,7 +61,7 @@ const init = () => {
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
             FOREIGN KEY (target_id) REFERENCES users(id) ON DELETE CASCADE
         );
-    `);
+    `)
 
     db.exec(`
         CREATE TABLE IF NOT EXISTS revoked_tokens (

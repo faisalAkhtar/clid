@@ -9,7 +9,7 @@ const getProfileByUserId = (user_id) => {
 
 const createProfile = (user_id) => {
     db.prepare(`
-        INSERT INTO profiles (user_id) VALUES (?, ?)
+        INSERT INTO profiles (user_id) VALUES (?)
     `).run(user_id)
     return getProfileByUserId(user_id)
 }
@@ -24,7 +24,7 @@ const updateProfile = (user_id, { name, age, gender, bio, location, interests })
 
     db.prepare(`
         UPDATE profiles
-        SET name = ?, age = ?, gender = ?, location = ?, interests = ?, bio = ?  updated_at = ?
+        SET name = ?, age = ?, gender = ?, location = ?, interests = ?, bio = ?, updated_at = ?
         WHERE user_id = ?
     `).run(
         name || exists.name,
