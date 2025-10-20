@@ -6,6 +6,7 @@ import Welcome from './components/Welcome.jsx'
 import SignIn from './components/SignIn.jsx'
 import SignUp from './components/SignUp.jsx'
 import Home from './components/Home.jsx'
+import Profile from './components/Profile.jsx'
 
 const App = () => {
 	const auth = useAuth()
@@ -24,6 +25,8 @@ const App = () => {
 			return <SignUp setScreen={setScreen} auth={auth} />
 		case 'home':
 			return <Home setScreen={setScreen} auth={auth} />
+		case 'profile':
+			return <Profile setScreen={setScreen} auth={auth} />
 		default:
 			return <Welcome setScreen={setScreen} />
 	}
