@@ -1,0 +1,21 @@
+{
+  "name": "clid",
+  "version": "1.0.0",
+  "description": "CLI based dating application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faisalAkhtar/clid.git"
+  },
+  "author": "Faisal Akhtar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/faisalAkhtar/clid/issues"
+  },
+  "homepage": "https://github.com/faisalAkhtar/clid#readme"
+}
