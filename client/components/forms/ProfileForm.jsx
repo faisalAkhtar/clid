@@ -1,88 +1,72 @@
-import React, { useState } from 'react'
-import { Box, Text, useInput } from 'ink'
+import React from 'react'
+import { Box, Text } from 'ink'
 import TextInput from 'ink-text-input'
 
-const ProfileForm = ({ profile, focus, onChange, msg }) => {
+const ProfileForm = ({ profile, focus, onChange, msg, mode = 'edit' }) => {
+	const isView = mode === 'view'
+	const color = isView ? "yellowBright" : "redBright"
+
+	const renderField = (label, field, placeholder) => {
+		if (isView) {
+			return (
+				<Text>
+					{label.slice(3).padEnd(14)}: <Text color="white">{profile[field] || '...'}</Text>
+				</Text>
+			)
+		}
+
+		return (
+			<Text>
+				{label.padEnd(14)}:{' '}
+				<TextInput
+					value={profile[field] ?? ''}
+					onChange={(v) => onChange(field, v)}
+					placeholder={placeholder}
+					focus={focus === field}
+				/>
+			</Text>
+		)
+	}
+
 	return (
-		<Box flexDirection="column" borderStyle="double" borderColor="yellowBright" paddingX={2}>
+		<Box flexDirection="column" borderStyle="double" borderColor={color} paddingX={2}>
 			<Text> </Text>
-			<Text color="yellowBright" bold>               My Profile               </Text>
+			<Text color={color} bold>
+				{'               '}
+				{isView ? '  Browse  ' : 'My Profile'}
+				{'               '}
+			</Text>
 			<Text>────────────────────────────────────────</Text>
 
 			<Text> </Text>
-			<Text>
-                [N] Name{'      '}:{' '}
-				<TextInput
-					value={profile.name}
-					onChange={(v) => onChange('name', v)}
-					placeholder="Enter name"
-					focus={focus === 'name'}
-				/>
-			</Text>
-
+			{renderField('[N] Name', 'name', 'Enter name')}
 			<Text> </Text>
-			<Text>
-				[A] Age{'       '}:{' '}
-				<TextInput
-					value={profile.age}
-					onChange={(v) => onChange('age', v)}
-					placeholder="Enter age"
-					focus={focus === 'age'}
-				/>
-			</Text>
-
+			{renderField('[A] Age', 'age', 'Enter age')}
 			<Text> </Text>
-			<Text>
-				[G] Gender{'    '}:{' '}
-				<TextInput
-					value={profile.gender}
-					onChange={(v) => onChange('gender', v)}
-					placeholder="Enter gender"
-					focus={focus === 'gender'}
-				/>
-			</Text>
-
+			{renderField('[G] Gender', 'gender', 'Enter gender')}
 			<Text> </Text>
-			<Text>
-				[L] Location{'  '}:{' '}
-				<TextInput
-					value={profile.location}
-					onChange={(v) => onChange('location', v)}
-					placeholder="Enter location"
-					focus={focus === 'location'}
-				/>
-			</Text>
-
+			{renderField('[L] Location', 'location', 'Enter location')}
 			<Text> </Text>
-			<Text>
-				[I] Interests{' '}:{' '}
-				<TextInput
-					value={profile.interests}
-					onChange={(v) => onChange('interests', v)}
-					placeholder="Enter interests"
-					focus={focus === 'interests'}
-				/>
-			</Text>
-
+			{renderField('[I] Interests', 'interests', 'Enter interests')}
 			<Text> </Text>
-			<Text>
-				[B] Bio{'       '}:{' '}
-                <TextInput
-					value={profile.bio}
-                    onChange={(v) => onChange('bio', v)}
-					placeholder="Enter bio"
-					focus={focus === 'bio'}
-                />
-            </Text>
-
+			{renderField('[B] Bio', 'bio', 'Enter bio')}
 			<Text> </Text>
-			<Text color="gray">
-				{focus !== 'bio' && focus !== 'none' && '<Enter> Next | <Esc> Back'}
-				{focus === 'bio' && '<Enter> Done | <Esc> Back'}
-				{focus === 'none' && '<N/A/G/L/I/B> Edit Fields  <Y> Submit  <Esc> Exit'}
-			</Text>
 
-			{msg && <Text color={msg.includes('failed') ? 'red' : 'yellow'}>{msg}</Text>}
+			{!isView && (
+				<Text color="gray">
+					{focus !== 'bio' && focus !== 'none' && '<Enter> Next | <Esc> Back'}
+					{focus === 'bio' && '<Enter> Done | <Esc> Back'}
+					{focus === 'none' && '<N/A/G/L/I/B> Edit Fields  <Y> Submit  <Esc> Exit'}
+				</Text>
+			)}
+			{!isView && msg && <Text color={msg.includes('failed') ? 'red' : 'yellow'}>{msg}</Text>}
+
+			{isView && (
+				<Text color="gray">
+					[←] Pass   [Esc] Exit   [→] Like
+				</Text>
+			)}
+			{isView && msg && <Text color={msg.includes('Match') ? 'magentaBright' : 'yellow'}>{msg}</Text>}
 			<Text> </Text>
 		</Box>
 	)

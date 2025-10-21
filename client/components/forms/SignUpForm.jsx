@@ -48,7 +48,7 @@ const SignUpForm = ({ username, email, password, focus, onChange, msg }) => {
 				{focus === 'username' && '<Enter> Next | <Esc> Back'}
 				{focus === 'email' && '<Enter> Next | <Esc> Back'}
 				{focus === 'password' && '<Enter> Done | <Esc> Back'}
-				{focus === 'none' && '<U> Edit Username  <E> Edit Email  <P> Edit Password  <Y> Submit  <Esc> Exit'}
+				{focus === 'none' && '<U/E/P> Edit Username, Email, Password  <Y> Submit  <Esc> Exit'}
 			</Text>
 
 			{msg && <Text color={msg.includes('failed') ? 'red' : 'yellow'}>{msg}</Text>}

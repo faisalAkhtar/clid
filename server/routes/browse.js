@@ -6,8 +6,11 @@ const { validateSwipe } = require('../middleware/browseMiddleware')
 const { listProfiles, swipeProfile } = require('../models/browseModel')
 
 router.get('/', authRequired, (req, res) => {
-    const limit = parseInt(req.body.limit)
-    const offset = parseInt(req.body.offset || '0')
+    let limit = 1, offset = 0
+    if (req.body) {
+        limit = parseInt(req.body.limit || '1')
+        offset = parseInt(req.body.offset || '0')
+    }
 
     if (limit == 0) {
         return res.status(400).send('Limit required')
@@ -30,7 +33,7 @@ router.post('/swipe', authRequired, validateSwipe, (req, res) => {
         return res.json({ alreadySwiped: true, match: false })
     }
 
-    const result = swipe(userId, info.target_id, info.type, info.reverseLike)
+    const result = swipeProfile(userId, info.target_id, info.type, info.reverseLike)
     res.json(result)
 })
 

@@ -11,8 +11,10 @@ const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '1h'
 router.post('/signup', (req, res) => {
     if (req.body == undefined) return res.status(400).json({ error: 'empty body' })
 
-    const { username, email } = req.body
+    var { username, email } = req.body
     if (!username) return res.status(400).json({ error: 'username required' })
+    username = username.toLowerCase()
+    email = username.toLowerCase()
 
     const existing = findUserByUsername(username)
     if (existing) return res.status(409).json({ error: 'username already exists' })
@@ -27,8 +29,9 @@ router.post('/signup', (req, res) => {
 router.post('/signin', (req, res) => {
     if (req.body == undefined) return res.status(400).json({ error: 'empty body' })
 
-    const { username } = req.body
+    var { username } = req.body
     if (!username) return res.status(400).json({ error: 'username required' })
+    username = username.toLowerCase()
 
     const user = findUserByUsername(username)
     if (!user) return res.status(404).json({ error: 'user not found' })
