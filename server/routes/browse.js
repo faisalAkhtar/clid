@@ -3,7 +3,7 @@ const router = express.Router()
 
 const { authRequired } = require('../middleware/authMiddleware')
 const { validateSwipe } = require('../middleware/browseMiddleware')
-const { listProfiles, swipeProfile } = require('../models/browseModel')
+const { listProfiles, listMatches, swipeProfile } = require('../models/browseModel')
 
 router.get('/', authRequired, (req, res) => {
     let limit = 1, offset = 0
@@ -22,6 +22,13 @@ router.get('/', authRequired, (req, res) => {
 
     let profiles = listProfiles(limit, offset, req.user.id)
 
+    res.json({ profiles })
+})
+
+router.get('/matches', authRequired, (req, res) => {
+    let profiles = listMatches(req.user.id)
+
+    console.log({ profiles })
     res.json({ profiles })
 })
 

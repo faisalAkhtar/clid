@@ -15,7 +15,7 @@ router.put('/', authRequired, (req, res) => {
     const user_id = req.user.id
     const {name, age, gender, bio, location, interests} = req.body
 
-    if (!name && !age && !gender && !bio) {
+    if (!name && !age && !gender && !bio && !location && !interests) {
         return res.status(400).json({ error: 'at least one profile field requried' })
     }
 

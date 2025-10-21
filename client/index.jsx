@@ -8,6 +8,7 @@ import SignUp from './components/SignUp.jsx'
 import Home from './components/Home.jsx'
 import Profile from './components/Profile.jsx'
 import Browse from './components/Browse.jsx'
+import Matches from './components/Matches.jsx'
 
 const App = () => {
 	const auth = useAuth()
@@ -30,6 +31,8 @@ const App = () => {
 			return <Profile setScreen={setScreen} auth={auth} />
 		case 'browse':
 			return <Browse setScreen={setScreen} auth={auth} />
+		case 'matches':
+			return <Matches setScreen={setScreen} auth={auth} />
 		default:
 			return <Welcome setScreen={setScreen} />
 	}

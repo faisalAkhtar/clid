@@ -5,6 +5,7 @@ const Home = ({ setScreen, auth }) => {
 	useInput(async (input) => {
 		const key = input.toLowerCase()
 		if (key === 'b') setScreen('browse')
+		if (key === 'm') setScreen('matches')
 		if (key === 'p') setScreen('profile')
 		if (key === 'o') {
 			await auth.signOut()
