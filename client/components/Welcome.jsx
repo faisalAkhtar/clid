@@ -26,6 +26,10 @@ const Welcome = ({ setScreen }) => {
 				{'Please sign-in to continue.'}
 			</Text>
 			<Text> </Text>
+			<Text color="gray">
+				{'Made with love by Faisal (https://faisalakhtar.github.io)'}
+			</Text>
+			<Text> </Text>
 		</Box>
 	)
 }
